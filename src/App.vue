@@ -1,26 +1,22 @@
 <template>
     <div>
-        <div>Loading: {{ loading }}</div>
-        <div>My Name is {{ user.name }}</div>
+        <button @click="decrement">-</button>
+        {{ number }}
+        <button @click="increment">+</button>
     </div>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue'
+import useCounter from './helpers/counter'
 export default {
     setup () {
         const state = reactive({
-            loading: false,
-            user: {
-                name: 'Ajie Pangestu'
-            }
+            number: 0
         })
-        setTimeout(() => {
-            state.loading = true
-            state.user.name = 'Ajie'
-        }, 2000)
+        const { decrement, increment } = useCounter(state)
         return {
-            ...toRefs(state)
+            ...toRefs(state), decrement, increment
         }
     }
 }
