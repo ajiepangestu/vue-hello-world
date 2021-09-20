@@ -1,9 +1,13 @@
 <template>
     <div>
-        <div v-if="loading" class="text-center">Loading....</div>
+        <div v-if="loading" class="text-center">
+            Loading....
+        </div>
         <div v-else>
             <ul>
-                <li v-for="post in posts" :key="post.id">{{ post.title }}</li>
+                <li v-for="post in posts" :key="post.id">
+                    {{ post.title }}
+                </li>
             </ul>
         </div>
     </div>
